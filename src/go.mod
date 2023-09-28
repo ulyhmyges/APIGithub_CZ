@@ -1,10 +1,15 @@
-module toto.com/apigithub_cz
+module toto.com/apigitub_cz
 
 go 1.21.1
 
 require (
+	github.com/gofiber/fiber/v2 v2.49.2
+	github.com/google/go-github/v55 v55.0.1-0.20230925170747-2d889e8d865c
+)
+
+require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/gofiber/fiber/v2 v2.49.2 // indirect
+	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
