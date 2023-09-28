@@ -3,9 +3,8 @@ package main
 import "github.com/gofiber/fiber/v2/log"
 
 func main() {
+	OutputLog()
 	app := AppFiber()
-
-	GithubLib()
 
 	// starting server
 	log.Info("\nStarting server\nListen to the port 3000...")

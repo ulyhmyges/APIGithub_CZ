@@ -13,13 +13,14 @@ func AppFiber() *fiber.App {
 	app := fiber.New(fiber.Config{})
 
 	app.Get("/", handler)
+	app.Get("/display/:user", handlerDisplay)
 
 	return app
 }
 
 func handler(c *fiber.Ctx) error {
 	fmt.Println("GET request / from: ", c.IP())
-	return c.SendString("GET / ")
+	return c.SendString("Welcome home ")
 }
 
 func OutputLog() {
@@ -31,6 +32,9 @@ func OutputLog() {
 	}
 	iw := io.MultiWriter(os.Stdout, file)
 	log.SetOutput(iw)
-	//log.Info("info")
-	//log.Warn("warn")
+}
+
+func handlerDisplay(c *fiber.Ctx) error {
+	listRepos := displayRepos(Githubrepos(c.Params("user")))
+	return c.Status(200).SendString(listRepos)
 }

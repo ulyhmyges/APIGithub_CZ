@@ -1,3 +1,6 @@
 # APIGithub_CZ
 ## ne fonctionne pas !
-### pas grand chose à voir
+
+### routes:
+
+* Repository List by user name: /display/:user
