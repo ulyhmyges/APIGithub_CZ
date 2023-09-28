@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"sort"
 
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/google/go-github/v55/github"
@@ -71,10 +72,17 @@ func Githubrepos(user string) ([]*github.Repository, string) {
 	return repos, user
 }
 
-func displayRepos(repos []*github.Repository, user string) (str string) {
+func DisplayRepos(repos []*github.Repository, user string) (str string) {
+	sort.Slice(repos, func(i, j int) bool {
+		return repos[i].CreatedAt.Unix() > repos[j].CreatedAt.Unix()
+	})
 	str = fmt.Sprintln("Repository List of", user)
-	for _, repo := range repos {
+	for index, repo := range repos {
+		if index >= 100 {
+			return str
+		}
 		str += fmt.Sprintln("-", *repo.Name)
+		log.Info(repo.CreatedAt.Unix())
 	}
 	return str
 }

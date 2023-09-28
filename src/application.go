@@ -35,6 +35,6 @@ func OutputLog() {
 }
 
 func handlerDisplay(c *fiber.Ctx) error {
-	listRepos := displayRepos(Githubrepos(c.Params("user")))
+	listRepos := DisplayRepos(Githubrepos(c.Params("user")))
 	return c.Status(200).SendString(listRepos)
 }

@@ -27,3 +27,6 @@ go.work
 .DS_Store
 
 documentation/
+
+// log
+test.log
